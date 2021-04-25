@@ -1,0 +1,17 @@
+CREATE TABLE CuentahabientesPorInstitucion(
+nombre text,
+apellido text,
+CUI bigint,
+email text,
+fechaRegistro Date,
+Genero text,
+InstitucionBancaria text,
+AbreviacionInst text,
+TipoCuenta text,
+SaldoInicial int,
+Primary Key ((InstitucionBancaria),CUI,TipoCuenta,FechaRegistro)
+)
+WITH CLUSTERING ORDER BY(CUI DESC, TipoCuenta DESC, FechaRegistro DESC);
+
+
+COPY cuentahabientesporinstitucion(nombre, apellido, CUI, email, fecharegistro, genero, institucionbancaria, abreviacioninst,tipocuenta, saldoInicial) FROM 'CuentaHabientesEjemplo.csv' WITH HEADER=TRUE AND DELIMITER=';';

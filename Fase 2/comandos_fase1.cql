@@ -6,7 +6,7 @@ CREATE TABLE proyecto201602916.reporte1 (
    ... nombre text,
    ... apellido text,
    ... dpi int,
-   ... fecha timestamp,
+   ... fecha Date,
    ... tipo text,
    ... monto float,
    ... primary key ((id_usuario),fecha,id_transaccion)
@@ -45,7 +45,7 @@ CREATE TABLE proyecto201602916.operacionesCuentahabiente (
     apellido text,
     cui text,
     email text,
-    fechaRegistro timestamp,
+    fechaRegistro Date,
     genero text,
    	institucionBancaria text,
     tipoCuenta text,
@@ -55,7 +55,7 @@ CREATE TABLE proyecto201602916.operacionesCuentahabiente (
    	institucionBancaria2 text,
     tipoCuenta2 text,
     montoTransferencia float,
-    fechaTransferencia timestamp,
+    fechaTransferencia Date,
     primary key ((cui),fechaTransferencia)
     )
     with clustering order by(fechaTransferencia desc);
@@ -67,7 +67,7 @@ CREATE TABLE proyecto201602916.debitosInstituciones (
    	institucionBancaria2 text,
     abreviacionInstitucion2 text,
     montoTransferencia float,
-    fechaTransferencia timestamp,
+    fechaTransferencia Date,
 	primary key ((institucionBancaria2),institucionBancaria, fechaTransferencia)
 )
 with clustering order by(institucionBancaria asc, fechaTransferencia desc);
@@ -79,7 +79,7 @@ CREATE TABLE proyecto201602916.creditosInstituciones (
    	institucionBancaria2 text,
     abreviacionInstitucion2 text,
     montoTransferencia float,
-    fechaTransferencia timestamp,
+    fechaTransferencia Date,
 	primary key ((institucionBancaria),institucionBancaria2, fechaTransferencia)
 )
 with clustering order by(institucionBancaria2 asc, fechaTransferencia desc);
@@ -90,7 +90,7 @@ CREATE TABLE proyecto201602916.cuentaHabientes (
 	apellido text,
 	cui text,
 	email text,
-	fechaRegistro timestamp,
+	fechaRegistro Date,
 	genero text,
 	institucionBancaria text,
 	abreviacionInstitucion text,
