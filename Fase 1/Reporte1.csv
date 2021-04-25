@@ -1,0 +1,6 @@
+id_usuario,id_transaccion,nombre,apellido,dpi,fecha,tipo,monto
+10001,1,'Ricardo','Menéndez','123456','2021-02-03 05:05:00','Credito',500
+10001,2,'Ricardo','Menéndez','123456','2021-02-04 06:05:00','Debito',100
+10001,3,'Ricardo','Menéndez','123456','2021-02-05 07:05:00','Debito',300
+10004,4,'Karen','Menéndez','123459','2021-02-06 08:05:00','Debito',250
+10005,5,'Ivan','Herrera','123460','2021-02-07 09:05:00','Credito',310
