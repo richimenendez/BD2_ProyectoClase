@@ -62,11 +62,17 @@ CREATE TABLE proyecto201602916.cuentaHabientes (
 	tipoCuenta text,
 	saldoInicial float,
 	primary key ((cui), institucionBancaria, fechaRegistro)
-);
+)
 with clustering order by(institucionBancaria asc, fechaRegistro desc);
+
+COPY cuentaHabientes(nombre,apellido,cui,email,fechaRegistro,genero,institucionBancaria,abreviacionInstitucion,tipoCuenta,saldoInicial) FROM 'Cuentas.csv' WITH HEADER=TRUE;
+
 
 CREATE TABLE proyecto201602916.institucionesBancarias (
 	institucionBancaria text,
-	abreviacionInstitucion text
+	abreviacionInstitucion text,
 	primary key ((institucionBancaria))
 );
+
+
+COPY institucionBancaria(institucionBancaria,abreviacionInstitucion) FROM 'Instituciones.csv' WITH HEADER=TRUE;
