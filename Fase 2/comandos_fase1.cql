@@ -18,7 +18,7 @@ CREATE TABLE proyecto201602916.operacionesCuentahabiente (
    	institucionBancaria2 text,
     tipoCuenta2 text,
     montoTransferencia float,
-    fechaTransferencia Date,
+    fechaTransferencia timestamp,
     primary key ((cui),fechaTransferencia)
     )
     with clustering order by(fechaTransferencia desc);
@@ -32,7 +32,7 @@ CREATE TABLE proyecto201602916.debitosInstituciones (
    	institucionBancaria2 text,
     abreviacionInstitucion2 text,
     montoTransferencia float,
-    fechaTransferencia Date,
+    fechaTransferencia timestamp,
 	primary key ((institucionBancaria2),institucionBancaria, fechaTransferencia)
 )
 with clustering order by(institucionBancaria asc, fechaTransferencia desc);
@@ -46,12 +46,12 @@ CREATE TABLE proyecto201602916.creditosInstituciones (
    	institucionBancaria2 text,
     abreviacionInstitucion2 text,
     montoTransferencia float,
-    fechaTransferencia Date,
+    fechaTransferencia timestamp,
 	primary key ((institucionBancaria),institucionBancaria2, fechaTransferencia)
 )
 with clustering order by(institucionBancaria2 asc, fechaTransferencia desc);
 
-COPY crebitosInstituciones(institucionBancaria,abreviacionInstitucion,institucionBancaria2,abreviacionInstitucion2,montoTransferencia,fechaTransferencia) FROM 'Creditos.csv' WITH HEADER=TRUE;
+COPY creditosInstituciones(institucionBancaria,abreviacionInstitucion,institucionBancaria2,abreviacionInstitucion2,montoTransferencia,fechaTransferencia) FROM 'Creditos.csv' WITH HEADER=TRUE;
 
 --Nombre_1,Apellido_1,CUI_1,Email_1,FechaRegistro_1,Genero_1,InstitucionBancaria_1,AbreviacionInstitucion_1,TipoCuenta_1,SaldoInicial_1
 CREATE TABLE proyecto201602916.cuentaHabientes (
