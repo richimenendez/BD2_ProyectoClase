@@ -1,43 +1,6 @@
 CREATE KEYSPACE IF NOT EXISTS proyecto201602916 WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor':3};
 
-CREATE TABLE proyecto201602916.reporte1 (
-   ... id_usuario int,
-   ... id_transaccion int,
-   ... nombre text,
-   ... apellido text,
-   ... dpi int,
-   ... fecha Date,
-   ... tipo text,
-   ... monto float,
-   ... primary key ((id_usuario),fecha,id_transaccion)
-   ... )
-   ... with clustering order by(fecha asc, id_transaccion desc);
-
-CREATE TABLE proyecto201602916.reporte2 (
-	id_institucion int,
-	tipo int,
-	nombre text,
-	direccion text,
-	monto float,
-	primary key ((id_institucion),tipo)
-)
-with clustering order by(tipo asc);
-
-CREATE TABLE proyecto201602916.reporte3 (
-	id_usuario int,
-	nombre text,
-	apellido text,
-	dpi text,
-	primary key ((id_usuario))
-);
-
-CREATE TABLE proyecto201602916.reporte4 (
-	id_institucion int,
-	tipo text,
-	nombre text,
-	direccion text,
-	primary key ((id_institucion))
-);
+-- Reporte 1
 
 -- Nombre_1,Apellido_1,CUI_1,Email_1,FechaRegistro_1,Genero_1,InstitucionBancaria_1,AbreviacionInstitucion_1,TipoCuenta_1,SaldoInicial_1,Nombre_2,Apellido_2,CUI_2,Email_2,FechaRegistro_2,Genero_2,InstitucionBancaria_2,AbreviacionInstitucion_2,TipoCuenta_2,SaldoInicial_2,MontoTransferencia,FechaTransferencia
 CREATE TABLE proyecto201602916.operacionesCuentahabiente (
@@ -59,6 +22,8 @@ CREATE TABLE proyecto201602916.operacionesCuentahabiente (
     primary key ((cui),fechaTransferencia)
     )
     with clustering order by(fechaTransferencia desc);
+
+COPY operacionescuentahabiente(nombre,apellido,cui,email,fechaRegistro,genero,institucionBancaria,tipoCuenta,saldoInicial,nombre2,apellido2,institucionBancaria2,tipoCuenta2,montoTransferencia,fechaTransferencia) FROM 'TransaccionesCuentahabiente.csv';
 
 -- ,MontoTransferencia,FechaTransferencia
 CREATE TABLE proyecto201602916.debitosInstituciones (
