@@ -1,6 +1,6 @@
 CREATE KEYSPACE IF NOT EXISTS proyecto201602916 WITH REPLICATION = {'class':'SimpleStrategy', 'replication_factor':3};
 
--- Reporte 1
+-- Reporte 1 
 
 -- Nombre_1,Apellido_1,CUI_1,Email_1,FechaRegistro_1,Genero_1,InstitucionBancaria_1,AbreviacionInstitucion_1,TipoCuenta_1,SaldoInicial_1,Nombre_2,Apellido_2,CUI_2,Email_2,FechaRegistro_2,Genero_2,InstitucionBancaria_2,AbreviacionInstitucion_2,TipoCuenta_2,SaldoInicial_2,MontoTransferencia,FechaTransferencia
 CREATE TABLE proyecto201602916.operacionesCuentahabiente (
@@ -23,7 +23,30 @@ CREATE TABLE proyecto201602916.operacionesCuentahabiente (
     )
     with clustering order by(fechaTransferencia desc);
 
-COPY operacionescuentahabiente(nombre,apellido,cui,email,fechaRegistro,genero,institucionBancaria,tipoCuenta,saldoInicial,nombre2,apellido2,institucionBancaria2,tipoCuenta2,montoTransferencia,fechaTransferencia) FROM 'TransaccionesCuentahabiente.csv';
+COPY operacionescuentahabiente(nombre,apellido,cui,email,fechaRegistro,genero,institucionBancaria,tipoCuenta,saldoInicial,nombre2,apellido2,institucionBancaria2,tipoCuenta2,montoTransferencia,fechaTransferencia) FROM 'TransaccionesCuentahabiente.csv'  WITH HEADER=TRUE;
+
+CREATE TABLE proyecto201602916.creditosCuentahabiente (
+    nombre text,
+    apellido text,
+    cui text,
+    email text,
+    fechaRegistro Date,
+    genero text,
+   	institucionBancaria text,
+    tipoCuenta text,
+    saldoInicial float,
+    nombre2 text,
+    apellido2 text,
+    cui2 text,
+   	institucionBancaria2 text,
+    tipoCuenta2 text,
+    montoTransferencia float,
+    fechaTransferencia timestamp,
+    primary key ((cui2),fechaTransferencia)
+    )
+    with clustering order by(fechaTransferencia desc);
+
+COPY creditoscuentahabiente(nombre,apellido,cui,email,fechaRegistro,genero,institucionBancaria,tipoCuenta,saldoInicial,nombre2,apellido2,cui2,institucionBancaria2,tipoCuenta2,montoTransferencia,fechaTransferencia) FROM 'TransaccionesCuentahabiente.csv'  WITH HEADER=TRUE;
 
 -- ,MontoTransferencia,FechaTransferencia
 CREATE TABLE proyecto201602916.debitosInstituciones (
