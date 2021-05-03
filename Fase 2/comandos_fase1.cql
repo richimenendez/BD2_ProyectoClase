@@ -46,7 +46,7 @@ CREATE TABLE proyecto201602916.creditosCuentahabiente (
     )
     with clustering order by(fechaTransferencia desc);
 
-COPY creditoscuentahabiente(nombre,apellido,cui,email,fechaRegistro,genero,institucionBancaria,tipoCuenta,saldoInicial,nombre2,apellido2,cui2,institucionBancaria2,tipoCuenta2,montoTransferencia,fechaTransferencia) FROM 'TransaccionesCuentahabiente.csv'  WITH HEADER=TRUE;
+COPY creditoscuentahabiente(nombre,apellido,cui,email,fechaRegistro,genero,institucionBancaria,tipoCuenta,saldoInicial,nombre2,apellido2,cui2,institucionBancaria2,tipoCuenta2,montoTransferencia,fechaTransferencia) FROM 'TransaccionesCuentahabiente2.csv'  WITH HEADER=TRUE;
 
 -- ,MontoTransferencia,FechaTransferencia
 CREATE TABLE proyecto201602916.debitosInstituciones (
@@ -56,7 +56,7 @@ CREATE TABLE proyecto201602916.debitosInstituciones (
     abreviacionInstitucion2 text,
     montoTransferencia float,
     fechaTransferencia timestamp,
-	primary key ((institucionBancaria2),institucionBancaria, fechaTransferencia)
+	primary key ((institucionBancaria),institucionBancaria2, fechaTransferencia)
 )
 with clustering order by(institucionBancaria asc, fechaTransferencia desc);
 
@@ -103,3 +103,18 @@ CREATE TABLE proyecto201602916.institucionesBancarias (
 
 
 COPY institucionBancaria(institucionBancaria,abreviacionInstitucion) FROM 'Instituciones.csv' WITH HEADER=TRUE;
+
+
+-- Querys
+-- Query 1
+ SELECT * FROM operacionescuentahabiente where cui='1909436437';
+-- Query 2
+select SUM(montotransferencia) from creditosintituciones where institucionBancaria = 'Banco G&T';
+select SUM(montotransferencia) from debitosintituciones where institucionBancaria2 = 'Banco G&T';
+-- Query 3
+select * from institucionesbancarias ;
+-- Query 4
+select * from institucionesbancarias ;
+-- Query 5
+select * from operacionescuentahabiente where cui='1909436437' AND fechaTransferencia>'2020-04-30 00:00:00' AND fechaTransferencia<'2020-06-1 00:00:00' 
+select * from creditoscuentahabiente where cui2='1909436437' AND fechaTransferencia>'2020-04-30 00:00:00' AND fechaTransferencia<'2020-06-1 00:00:00';
