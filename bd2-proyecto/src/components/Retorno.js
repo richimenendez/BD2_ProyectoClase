@@ -7,7 +7,7 @@ export default function Retorno() {
         <div>
             <Row>
                 <Col md="3">
-                <Link to="/"><Button> Regresar</Button></Link>
+                <Link to="/Menu"><Button> Regresar</Button></Link>
                 </Col>
                 <Col md="9">
                 </Col>

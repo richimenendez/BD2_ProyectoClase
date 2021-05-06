@@ -4,7 +4,10 @@ import Menu from './Menu'
 import Instituciones from './Instituciones'
 import Users from './Users'
 import Rep1 from './Rep1'
+import Rep2 from './Rep2'
 import Rep3 from './Rep3'
+import Login from './Login'
+import Deposito from './Deposito'
 import {
     BrowserRouter as Router,
     Switch,
@@ -41,14 +44,23 @@ export default function Home() {
       <Route path="/banks">
           <Instituciones/>
       </Route>
+      <Route path="/Menu">
+          <Menu/>
+      </Route>
       <Route path="/Rep1">
           <Rep1/>
+      </Route>
+      <Route path="/Rep2">
+          <Rep2/>
       </Route>
       <Route path="/Rep3">
           <Rep3/>
       </Route>
+      <Route path="/deposito">
+          <Deposito/>
+      </Route>
       <Route path="/">
-          <Menu/>
+          <Login/>
       </Route>
   </Switch>
   </div>
